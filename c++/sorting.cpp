@@ -11,9 +11,6 @@ void selectionsort(int a[],int n){
         }
         swap(a[i],a[m]);
     }
-    for(int i=0;i<n;i++){
-        cout<<a[i]<<endl;
-    }
 }
 void bubble(int a[],int n){
     bool s=false;
@@ -30,8 +27,22 @@ void bubble(int a[],int n){
         cout<<a[i]<<endl;
     }
 }
+void insertion(int a[],int n){
+    for(int i=1;i<n;i++){
+        int m=a[i];
+        int j=i-1;
+        while(j>=0 && a[j]>m){
+            a[j+1]=a[j];
+            j--;
+        }
+        a[j+1]=m;
+    }
+}
 int main(){
-    int arr[6]={1,2,3,4,5,6};
-    bubble(arr, sizeof(arr) / sizeof(arr[0]));
+    int arr[6]={13,46,24,52,20,9};
+    insertion(arr, sizeof(arr) / sizeof(arr[0]));
+    for(int i=0;i<6;i++){
+        cout<<arr[i]<<endl;
+    }
     
 }
