@@ -38,9 +38,35 @@ void insertion(int a[],int n){
         a[j+1]=m;
     }
 }
+void merge(int arr[], int l, int mid, int h){
+    vector<int> v(h-l+1);
+    int p=l,q=mid+1,k=0;
+    while(p<=mid && q<=h){
+        if(arr[p]<=arr[q])   v[k++]=arr[p++];
+        else    v[k++]=arr[q++];
+    }
+    while(p<=mid){
+        v[k++]=arr[p++];
+    }
+    while(q<=h){
+        v[k++]=arr[q++];
+    }
+    for(int i=l;i<=h;i++){
+        arr[i]=v[i-l];
+    }
+}
+void msort(int arr[], int l,int h){
+    if(l>=h)    return;
+    int mid=(l+h)/2;
+    msort(arr,l,mid);
+    msort(arr,mid+1,h);
+    merge(arr,l,mid,h);
+}
+
 int main(){
     int arr[6]={13,46,24,52,20,9};
-    insertion(arr, sizeof(arr) / sizeof(arr[0]));
+    int n=sizeof(arr) / sizeof(arr[0]);
+    msort(arr, 0,n-1);
     for(int i=0;i<6;i++){
         cout<<arr[i]<<endl;
     }
