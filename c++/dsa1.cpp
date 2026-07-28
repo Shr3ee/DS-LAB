@@ -9,7 +9,9 @@ int main(){
     //     c++;}
     // printf("%d",c);
     cin>>a>>b;
-    if(a==b)    cout<<c;
+    if(a==b){
+        cout<<c;
+        return 0;}
     else if (a<b)   b-a;
     else{
         int diff=a-b;
